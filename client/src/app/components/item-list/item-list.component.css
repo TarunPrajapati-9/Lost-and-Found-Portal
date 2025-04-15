@@ -1,0 +1,4 @@
+.img-fixed {
+  height: 200px; /* Fixed height */
+  object-fit: cover; /* Crops extra parts and fills the area */
+}

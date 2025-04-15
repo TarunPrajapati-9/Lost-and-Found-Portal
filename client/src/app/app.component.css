@@ -1,0 +1,42 @@
+/* Customizing navbar background gradient */
+.navbar-light.bg-gradient {
+  background: linear-gradient(90deg, #3b5998, #8b9dc3); /* Example gradient */
+}
+
+/* Making sure buttons are visible and have proper padding */
+.nav-item-custom {
+  padding: 0.5rem 1rem;
+  color: #ffffff; /* Ensure the links are white */
+}
+
+.navbar-brand {
+  font-size: 24px; /* Adjust brand text size */
+  padding-left: 10px;
+}
+
+/* Customizing navbar buttons */
+.btn-rounded {
+  border-radius: 50px; /* Rounded button corners */
+  font-weight: bold;
+}
+
+/* Adding hover effects for buttons */
+.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Adding hover effects for navbar links */
+.nav-link:hover {
+  color: #ffd700 !important; /* Gold color on hover */
+}
+
+/* Ensuring navbar items are visible */
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+}

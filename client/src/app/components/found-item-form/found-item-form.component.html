@@ -1,0 +1,117 @@
+<div *ngIf="showForm">
+  <form
+    class="card p-4 mx-auto mt-4 mb-4 shadow"
+    style="max-width: 1200px"
+    (ngSubmit)="onSubmit()"
+  >
+    <h4 class="text-center mb-4">Report Found Item</h4>
+
+    <!-- Name -->
+    <div class="form-group mb-3">
+      <label for="name" class="form-label">Item Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Enter item name"
+        [(ngModel)]="formData.name"
+        name="name"
+        required
+      />
+    </div>
+
+    <!-- Image Upload -->
+    <div class="form-group mb-3">
+      <label class="form-label">Upload Image</label>
+      <input
+        type="file"
+        accept="image/*"
+        class="form-control"
+        (change)="onImageSelected($event)"
+        required
+      />
+      <div *ngIf="formData.image" class="mt-2">
+        <img
+          [src]="formData.image"
+          alt="Preview"
+          style="max-width: 200px; border-radius: 8px"
+        />
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        rows="3"
+        placeholder="Describe the found item"
+        [(ngModel)]="formData.description"
+        name="description"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Location -->
+    <div class="form-group mb-3">
+      <label for="location" class="form-label">Found Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        placeholder="Where did you find it?"
+        [(ngModel)]="formData.location"
+        name="location"
+        required
+      />
+    </div>
+
+    <!-- Tag (Lost or Found)
+    <div class="form-group mb-3">
+      <label for="tag" class="form-label">Tag</label>
+      <select
+        class="form-control"
+        id="tag"
+        [(ngModel)]="formData.tag"
+        name="tag"
+        required
+      >
+        <option value="Found">Found</option>
+        <option value="Lost">Lost</option>
+      </select>
+    </div> -->
+    <!-- Found Date -->
+    <div class="form-group mb-3">
+      <label for="foundDate" class="form-label">Found Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="foundDate"
+        [(ngModel)]="formData.foundDate"
+        name="foundDate"
+        required
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-success w-100 mt-3"
+      [disabled]="isUploading || isSubmitting"
+    >
+      <span *ngIf="isUploading">Uploading Image...</span>
+      <span *ngIf="isSubmitting">Submitting...</span>
+      <span *ngIf="!isUploading && !isSubmitting">Submit Item</span>
+    </button>
+  </form>
+</div>
+
+<!-- If Not Logged In -->
+<div *ngIf="!showForm" class="text-center mt-5">
+  <h4 class="text-danger">Access Denied</h4>
+  <p>
+    {{ message }}
+    <button (click)="navigateToLogin()" class="btn btn-primary">Login</button>
+  </p>
+</div>

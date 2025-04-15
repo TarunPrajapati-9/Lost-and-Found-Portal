@@ -1,0 +1,64 @@
+<nav
+  *ngIf="showNavbar"
+  class="navbar navbar-expand-lg navbar-light bg-light shadow-sm"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="'/'">Lost and Found Portal</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/items'">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/lost'">Report Lost Item</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/found'">Report Found Item</a>
+        </li>
+
+        <ng-container *ngIf="!showLogout">
+          <li class="nav-item ms-2">
+            <a
+              class="btn btn-outline btn-rounded"
+              [routerLink]="'/login'"
+              role="button"
+            >
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+          <li class="nav-item ms-2">
+            <a
+              class="btn btn-primary btn-rounded"
+              [routerLink]="'/signup'"
+              role="button"
+            >
+              <i class="bi bi-person-plus-fill"></i> Sign Up
+            </a>
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="showLogout">
+          <li class="nav-item ms-2">
+            <button class="btn btn-danger btn-rounded" (click)="logout()">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
